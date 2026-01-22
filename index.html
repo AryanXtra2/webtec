@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VIT-AP Portal</title>
+    <style>
+        /* --- 1. GENERAL RESET --- */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* --- 2. TOP NAVIGATION --- */
+        .top-nav {
+            background-color: #003a70; /* Royal Blue */
+            color: white;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 2000;
+        }
+
+        .top-nav ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .top-nav > ul > li {
+            position: relative;
+            height: 60px; 
+        }
+
+        .top-nav > ul > li > a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: 0 25px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            /* REMOVED TRANSITION HERE */
+        }
+
+        .top-nav > ul > li:hover > a {
+            background-color: #0056b3;
+        }
+
+        /* --- TOP DROPDOWN --- */
+        .top-submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding-top: 10px; /* Safe zone for mouse */
+            width: 200px;
+            z-index: 9999;
+        }
+
+        .top-submenu-content {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            border-top: 3px solid #00c6ff;
+        }
+
+        .top-submenu li a {
+            display: block;
+            padding: 12px 20px;
+            color: #444;
+            text-decoration: none;
+            font-size: 14px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .top-submenu li a:hover {
+            background-color: #f9f9f9;
+            color: #003a70;
+            /* REMOVED SLIDING ANIMATION HERE */
+        }
+
+        .top-nav li:hover .top-submenu {
+            display: block;
+        }
+
+
+        /* --- 3. LAYOUT CONTAINER --- */
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            background: white;
+            min-height: 600px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+
+        /* --- 4. SIDEBAR --- */
+        .side-nav {
+            width: 240px;
+            background-color: #fff;
+            border-right: 1px solid #eee;
+            flex-shrink: 0;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .side-nav > ul > li {
+            position: relative;
+        }
+
+        .side-nav > ul > li > a {
+            display: block;
+            padding: 18px 25px;
+            color: #555;
+            text-decoration: none;
+            font-size: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            /* REMOVED TRANSITION HERE */
+        }
+
+        .side-nav > ul > li:hover > a {
+            color: #003a70;
+            background-color: #f4faff;
+            border-left: 4px solid #003a70;
+        }
+
+        /* --- SIDEBAR DROPDOWN --- */
+        .side-submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 10px;
+            padding-left: 10px; /* Safe zone */
+            width: 180px;
+            z-index: 1000;
+        }
+
+        .side-submenu-content {
+            background-color: white;
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        .side-submenu li a {
+            display: block;
+            padding: 12px 20px;
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .side-submenu li a:hover {
+            color: #003a70;
+            background-color: #f9f9f9;
+        }
+
+        .side-nav li:hover .side-submenu {
+            display: block;
+        }
+
+
+        /* --- 5. MAIN CONTENT --- */
+        .content {
+            padding: 40px;
+            width: 100%;
+            display: flex;
+            gap: 40px;
+        }
+
+        .home-left {
+            flex: 3;
+        }
+
+        .home-right {
+            flex: 2;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #003a70;
+            font-weight: 300;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .home-image {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="top-nav">
+    <ul>
+        <li><a href="#">ACADEMICS</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="academics.html">Programs Offered</a></li>
+                    <li><a href="academics.html">Course Curriculum</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">RESEARCH</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="research.html">Research Centers</a></li>
+                    <li><a href="research.html">Funded Projects</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">ADMISSIONS</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="admissions.html">Undergraduate</a></li>
+                    <li><a href="admissions.html">Postgraduate</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">EXAMINATIONS</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="examinations.html">Exam Schedule</a></li>
+                    <li><a href="examinations.html">Check Results</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">CAMPUS</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="campus.html">Infrastructure</a></li>
+                    <li><a href="campus.html">Hostel Facilities</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">STUDENT LIFE</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="studentlife.html">Clubs & Chapters</a></li>
+                    <li><a href="studentlife.html">Sports & Games</a></li>
+                </ul>
+            </div>
+        </li>
+
+        <li><a href="#">ABOUT</a>
+            <div class="top-submenu">
+                <ul class="top-submenu-content">
+                    <li><a href="index.html">Overview</a></li>
+                    <li><a href="index.html">Leadership</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <aside class="side-nav">
+        <ul>
+            <li>
+                <a href="#">Classes</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="classroom-a.html">Gallery Classrooms</a></li>
+                        <li><a href="classroom-b.html">Regular Classrooms</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Sports</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="sports-indoor.html">Indoor Games</a></li>
+                        <li><a href="sports-outdoor.html">Outdoor Courts</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">FFCS System</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="ffcs-overview.html">How it Works</a></li>
+                        <li><a href="ffcs-registration.html">Course Registration</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Placements</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="placements-stats.html">Placement Stats</a></li>
+                        <li><a href="placements-companies.html">Recruiters</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Career Dev</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="career-guidance.html">Guidance Cell</a></li>
+                        <li><a href="career-workshops.html">Workshops</a></li>
+                    </ul>
+                </div>
+            </li>
+            
+             <li>
+                <a href="#">Facilities</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="labs.html">Laboratories</a></li>
+                        <li><a href="library.html">Central Library</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Hostels</a>
+                <div class="side-submenu">
+                    <ul class="side-submenu-content">
+                        <li><a href="boys-hostel.html">Men's Hostel</a></li>
+                        <li><a href="girls-hostel.html">Women's Hostel</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="content home-layout">
+        <div class="home-left">
+            <h1>Welcome to VIT-AP</h1>
+            <p>
+                VIT-AP University, located in Amaravati, Andhra Pradesh, is a
+                state-of-the-art institution focused on innovation, research,
+                and industry-integrated education.
+            </p>
+           
+        </div>
+
+        <div class="home-right">
+            <img src="vitap.png" alt="VIT-AP Campus" class="home-image">
+        </div>
+    </main>
+
+</div>
+
+</body>
+</html>
